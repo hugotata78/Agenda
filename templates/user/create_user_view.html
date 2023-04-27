@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} Registro de Usuario {% endblock %}
+
+{% block 'content' %}
+<form action="" method="post" class="d-flex flex-column align-items-center border m-4 p-4">
+    <h3>Crear cuenta de Usuario</h3>
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <div class="m-2 p-2">
+        <input type="submit" value="Registrar Usuario" class="btn btn-success">
+        <a href="{% url 'index' %}" class="btn btn-primary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base/base.html'%}
+
+{% block 'title'%} Detalles {{ todo }} {%endblock %}
+
+{% block 'content' %}
+<div class="card m-5 p-5">
+    <div class="card-body">
+        <h2 class="card-title">Titulo: {{ todo }}</h2>
+        <p class="card-text">Descripcion: {{ todo.description }}</p>
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="{% url 'todo_list' %}" class="btn btn-primary m-2">Volver</a>
+            <a href="{% url 'update_todo' pk=todo.id %}" class="btn btn-info m-2">Actualizar Tarea</a>
+            <a href="{% url 'delete_todo' pk=todo.id %}" class="btn btn-danger m-2">Eliminar Tarea</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} {{ user }} {% endblock %}
+
+{% block 'content' %}
+
+<div class="card m-5 p-5">
+    <div class="card-body">
+        <h3 class="card-title">Nombre de Usuario: {{ user }}</h3>
+        {% if user.first_name %}
+        <p>Nombre: {{ user.first_name}}</p>
+        {%endif%}
+        {% if user.last_name %}
+        <p>Apellido: {{ user.last_name}}</p>
+        {%endif%}
+        {% if user.full_name %}
+        <p>Nombre completo: {{ user.full_name}}</p>
+        {%endif%}
+        <p class="card-text">Email: {{ user.email }}</p>
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="{% url 'index' %}" class="btn btn-primary m-2">Volver</a>
+            <a href="{% url 'update_user' pk=user.id %}" class="btn btn-info m-2">Actualizar Usuario</a>
+            <a href="{% url 'delete_user' pk=user.id %}" class="btn btn-danger m-2">Eliminar Usuario</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

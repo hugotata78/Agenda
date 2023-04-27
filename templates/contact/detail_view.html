@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} {{ contact }} {% endblock %}
+
+{% block 'content' %}
+<div class="card m-5 p-5">
+    <div class="card-body">
+        <h2 class="card-title">Nombre: {{ contact }}</h2>
+        <p class="card-text">Email: {{ contact.email }}</p>
+        <p class="card-text">Movil: {{ contact.movil }}</p>
+        <p class="card-text">Telefono: {{ contact.phone }}</p>
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="{% url 'contact_list' %}" class="btn btn-primary m-2">Volver</a>
+            <a href="{% url 'update_contact' pk=contact.id %}" class="btn btn-info m-2">Actualizar Contacto</a>
+            <a href="{% url 'delete_contact' pk=contact.id%}" class="btn btn-danger m-2">Eliminar Contacto</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

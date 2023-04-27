@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} Eliminar {{ contact }} {% endblock %}
+
+{% block 'content' %}
+
+<form action="" method="post" class="d-flex flex-column align-items-center border m-4 p-4">
+    {% csrf_token %}
+    <div class="alert alert-danger" role="alert">
+        ¿Esta seguro de que desea eliminar a {{ contact }} de su lista de contactos?
+    </div>
+    <div class="m-2 p-2">
+        <input type="submit" value="Eliminar Contacto" class="btn btn-danger">
+        <a href="{% url 'contact_list' %}" class="btn btn-primary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

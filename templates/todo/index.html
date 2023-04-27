@@ -1,0 +1,36 @@
+{% extends 'base/base.html'%}
+
+{% block 'title' %} Inicio {% endblock %}
+
+{% block 'content' %}
+<h1>Gestor de Tareas</h1>
+{% if request.user.is_authenticated %}
+
+{% if my_list_todo %}
+{% if pending_todo %}
+<div class="alert alert-danger" role="alert">
+    Bienvenido {{ request.user}}! Te recordamos que tienes {{ pending_todo | length }} tareas
+    <strong>'PENDIENTES'</strong>. Para tener más detalles de las mismas debes dirigirte al apartado <a
+        href="{% url 'todo_list' %}"> <strong>Mis Tareas</strong></a> de la aplicación.
+</div>
+{% else %}
+<div class="alert alert-info" role="alert">
+    Bienvenido {{ request.user }}! No tienes tareas pendientes en tu lista de tareas, estás al día con las mismas!
+    Recuerda que si quieres
+    agregar nuevas tareas para realizar debes dirigirte al apartado <a href="{% url 'todo_list' %}"> <strong>Mis
+            Tareas</strong></a> y seleccionar el botón <strong>Agregar Tareas</strong>.
+</div>
+{% endif %}
+{% else %}
+<div class="alert alert-warning" role="alert">
+    Bienvenido {{ request.user }}! Te recordamos que tu lista de tareas se encuentra vacía. Si quieres agregar tareas a
+    la misma debes dirigirte al apartado <a href="{% url 'todo_list' %}"> <strong>Mis
+            Tareas</strong></a> y seleccionar el botón <strong>Agregar Tareas</strong>.
+</div>
+{%endif%}
+{% else %}
+<div class="alert alert-success" role="alert">
+    Bienvenido! La presente aplicación es un gestor de tareas. Te recordamos que para empezar a gestionar tus tareas, deberás <a href="{% url 'login' %}"><strong>iniciar sesión</strong></a> o en su defecto <a href="{% url 'create_user' %}"><strong>registrar tu usuario</strong></a> para empezar a utilizar la aplicación.
+</div>
+{% endif%}
+{% endblock %}
